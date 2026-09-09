@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidhi Please 🥺</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e7, #fff4c4);
+      overflow: hidden;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 430px;
+      background: white;
+      padding: 30px 22px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,.15);
+    }
+
+    .emoji {
+      font-size: 65px;
+    }
+
+    h1 {
+      color: #ff4081;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #444;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      height: 70px;
+      position: relative;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 14px 25px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background: #ff4081;
+      color: white;
+      box-shadow: 0 5px 15px rgba(255,64,129,.3);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #ddd;
+      color: #333;
+      position: absolute;
+      left: 55%;
+      top: 0;
+    }
+
+    .warning {
+      font-size: 13px;
+      color: #999;
+      margin-top: 15px;
+    }
+
+    #success {
+      display: none;
+    }
+
+    #success h1 {
+      font-size: 32px;
+    }
+
+    .dramatic {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 25px;
+      animation: fly 3s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fly {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- QUESTION -->
+    <div id="question">
+
+      <div class="emoji">🥺👉👈</div>
+
+      <h1>Sidhi Suno... 😭</h1>
+
+      <p>
+        Vishal se thodi si galti ho gayi...
+        <br>
+        <strong>Thodi si matlab... 🫣</strong>
+      </p>
+
+      <p>
+        <span class="highlight">Gulshan aur Lakshman</span>
+        dono ka kehna hai:
+        <br><br>
+        <strong>
+          "Sidhi maan jao yaar 😂<br>
+          Vishal ko maaf kar do!"
+        </strong>
+      </p>
+
+      <p class="dramatic">
+        Kya tum Vishal ko maaf kar sakti ho? 🥺❤️
+      </p>
+
+      <div class="buttons">
+        <button id="yesBtn">Haan ❤️</button>
+        <button id="noBtn">Nahi 😒</button>
+      </div>
+
+      <div class="warning">
+        ⚠️ Nahi button thoda shararti hai...
+      </div>
+
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="success">
+
+      <div class="emoji">🥳❤️</div>
+
+      <h1>YESSS! 🎉</h1>
+
+      <p>
+        <strong>Sidhi maan gayi! 😭❤️</strong>
+      </p>
+
+      <p>
+        Vishal officially bach gaya...
+        <br>
+        warna Gulshan aur Lakshman ki
+        <br>
+        <strong>Emergency Meeting 🚨</strong>
+        bulani padti 😂
+      </p>
+
+      <p>
+        Lekin Vishal ki taraf se:
+        <br><br>
+        <strong>I'm REALLY SORRY, SIDHI 🥺❤️</strong>
+      </p>
+
+      <p>
+        Ab gussa khatam? 😌
+        <br>
+        <strong>Deal? 🤝❤️</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    const question = document.getElementById("question");
+    const success = document.getElementById("success");
+
+    function escapeButton() {
+
+      const padding = 15;
+
+      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+      const x = Math.max(
+        padding,
+        Math.random() * maxX
+      );
+
+      const y = Math.max(
+        padding,
+        Math.random() * maxY
+      );
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+
+      // Funny text changes
+      const messages = [
+        "Pakad ke dikhao 😜",
+        "Nahi milega 😂",
+        "Nope! 🏃",
+        "Too slow 😎",
+        "Main nahi dabunga 😭",
+        "Try again 😂",
+        "Vishal bach gaya 😭",
+        "Nahi nahi nahi 😜"
+      ];
+
+      noBtn.innerText =
+        messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    // Computer
+    noBtn.addEventListener("mouseenter", escapeButton);
+
+    // Mobile
+    noBtn.addEventListener("touchstart", function(e) {
+      e.preventDefault();
+      escapeButton();
+    });
+
+    // Just in case
+    noBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      escapeButton();
+    });
+
+    // YES
+    yesBtn.addEventListener("click", function() {
+
+      question.style.display = "none";
+      success.style.display = "block";
+
+      // Hearts explosion ❤️
+      for (let i = 0; i < 50; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML =
+          Math.random() > 0.5 ? "❤️" : "💖";
+
+        heart.style.left =
+          Math.random() * 100 + "vw";
+
+        heart.style.top =
+          (80 + Math.random() * 20) + "vh";
+
+        heart.style.animationDuration =
+          (2 + Math.random() * 2) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    });
+
+  </script>
+
+</body>
+</html>
